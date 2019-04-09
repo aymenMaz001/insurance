@@ -6,12 +6,12 @@ import java.sql.Date;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Feeds
+ * Entity implementation class for Entity: Archive
  *
  */
 @Entity
 
-public class Feeds implements Serializable {
+public class Archive implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -29,75 +29,50 @@ public class Feeds implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private FeedsType type;
 	
-	@Column(name = "Sent_Date")
-	private Date dateSent;
-	
-	@Enumerated(EnumType.STRING)
-	private FeedsState state;
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
+	@Column(name = "Solving_Date")
+	private Date dateSolving;
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public String getFeedback() {
 		return feedback;
 	}
 
-
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
-	}
-
-	public Date getDateSent() {
-		return dateSent;
-	}
-
-
-	public void setDateSent(Date dateSent) {
-		this.dateSent = dateSent;
 	}
 
 	public FeedsType getType() {
 		return type;
 	}
 
-
 	public void setType(FeedsType type) {
 		this.type = type;
 	}
 
-
-	public FeedsState getState() {
-		return state;
+	public Date getDateSolving() {
+		return dateSolving;
 	}
 
-
-	public void setState(FeedsState state) {
-		this.state = state;
+	public void setDateSolving(Date dateSolving) {
+		this.dateSolving = dateSolving;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	User customer;
-	
-	
-	public Feeds() {
+	public Archive() {
 		super();
 	}
    

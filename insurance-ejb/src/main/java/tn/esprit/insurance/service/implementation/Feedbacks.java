@@ -10,11 +10,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import edu.stanford.nlp.util.CoreMap;
+//import edu.stanford.nlp.ling.CoreAnnotations;
+//import edu.stanford.nlp.pipeline.Annotation;
+//import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+//import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
+//import edu.stanford.nlp.util.CoreMap;
 import tn.esprit.insurance.entity.Feeds;
+import tn.esprit.insurance.entity.FeedsState;
 import tn.esprit.insurance.service.interfaces.IFeedbacksRemote;
 
 @Stateless
@@ -31,19 +33,23 @@ public class Feedbacks implements IFeedbacksRemote {
 	@Override
 	public void removeFeeds(int id) {
 		// TODO Auto-generated method stub
+		em.remove(em.find(Feeds.class, id));
 
 	}
 
 	@Override
-	public void updateFeeds(Feeds newFeed) {
+	public void updateFeeds(Feeds feed) {
 		// TODO Auto-generated method stub
-
+		Feeds emp = em.find(Feeds.class, feed.getId());
+		FeedsState etat = null;
+		emp.setState(etat.solved);
 	}
 
 	@Override
 	public Feeds findFeedsById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Feeds f = em.find(Feeds.class, id);
+		return f;
 	}
 
 	@Override
@@ -55,31 +61,37 @@ public class Feedbacks implements IFeedbacksRemote {
 	
 	@Override
 	public void getFeelings(){
-//	    Properties props = new Properties();
-//	    props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
-//	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+//    	String text = "I am feeling very happy and frustrated.";
+//    	Properties props = new Properties();
+//    	props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+//    	StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 //
-//	    // read some text in the text variable
-//	    String text = "\"But I do not want to go among mad people,\" Alice remarked.\n" +
-//	            "\"Oh, you can not help that,\" said the Cat: \"we are all mad here. I am mad. You are mad.\"\n" +
-//	            "\"How do you know I am mad?\" said Alice.\n" +
-//	            "\"You must be,\" said the Cat, \"or you would not have come here.\" This is awful, bad, disgusting";
-//
-//	    // create an empty Annotation just with the given text
-//	    Annotation document = new Annotation(text);
-//
-//	    // run all Annotators on this text
-//	    pipeline.annotate(document);
-//
-//	    List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
-//	    for (CoreMap sentence : sentences) {
-//	        String sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-//	        System.out.println(sentiment + "\t" + sentence);
-//	    }
+//    	Annotation annotation = pipeline.process(text);
+//    	List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+//    	for (CoreMap sentence : sentences) {
+//    	  String sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
+//          //dialog.setBody(new Text(sentiment + "\t" + sentence));
+//    	  System.out.println(sentiment + "\t" + sentence);
+//    	}
+		
+		
+//        Properties pipelineProps = new Properties();
+//        Properties tokenizerProps = new Properties();
+//        pipelineProps.setProperty("annotators", "parse, sentiment");
+//        pipelineProps.setProperty("parse.binaryTrees", "true");
+//        pipelineProps.setProperty("enforceRequirements", "false");
+//        tokenizerProps.setProperty("annotators", "tokenize ssplit");
+//        StanfordCoreNLP tokenizer = new StanfordCoreNLP(tokenizerProps);
+//        StanfordCoreNLP pipeline = new StanfordCoreNLP(pipelineProps);
+//        String line = "Amazingly grateful beautiful friends are fulfilling an incredibly joyful accomplishment. What an truly terrible idea.";
+//        Annotation annotation = tokenizer.process(line);
+//        pipeline.annotate(annotation);
+//        // normal output
+//        for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
+//            String output = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
+//            System.out.println(output);
+//        }
 	}
-
-
-
 }
 
 
