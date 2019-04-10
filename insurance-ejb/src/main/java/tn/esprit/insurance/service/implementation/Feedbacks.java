@@ -92,6 +92,20 @@ public class Feedbacks implements IFeedbacksRemote {
 //            System.out.println(output);
 //        }
 	}
+	
+	@Override
+	public List<Feeds> getAllFeedsByName(String ff) {
+		String sql = "select f from Feeds f where f.title like '"+ff+"%'";
+		List<Feeds> emp = em.createQuery(sql, Feeds.class).getResultList();
+		return emp;	
+	}
+	
+	@Override
+	public List<Feeds> getAllFeedsByState(String state) {
+		String sql = "select f from Feeds f where f.state like '"+state+"%'";
+		List<Feeds> emp = em.createQuery(sql, Feeds.class).getResultList();
+		return emp;	
+	}
 }
 
 

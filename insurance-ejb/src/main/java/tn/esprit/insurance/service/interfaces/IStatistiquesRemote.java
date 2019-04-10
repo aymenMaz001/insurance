@@ -12,4 +12,5 @@ public interface IStatistiquesRemote {
 	
 	public List<Feeds> findAllFeeds();
 	public List<Feeds> findStats(Date d1,Date d2);
+	public Long findStatistique();
 }

@@ -25,9 +25,12 @@ public class Archive implements Serializable {
 	
 	@Column(name = "Feedback")
 	private String feedback;
-	
+
 	@Enumerated(EnumType.STRING)
 	private FeedsType type;
+
+	@Column(name = "Sent_Date")
+	private Date dateSent;
 	
 	@Column(name = "Solving_Date")
 	private Date dateSolving;
@@ -72,6 +75,14 @@ public class Archive implements Serializable {
 		this.dateSolving = dateSolving;
 	}
 
+	public Date getDateSent() {
+		return dateSent;
+	}
+
+	public void setDateSent(Date dateSent) {
+		this.dateSent = dateSent;
+	}
+	
 	public Archive() {
 		super();
 	}

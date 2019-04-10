@@ -23,6 +23,9 @@ public class StatistiquesService implements IStatistiquesRemote {
 	@Override
 	public List<Feeds> findAllFeeds() {
 		// TODO Auto-generated method stub
+//		TypedQuery<Feeds> query = 
+//				em.createQuery("select count(f.id) from Feeds f", Feeds.class);
+//		return query.getResultList();
 		return null;
 	}
 
@@ -35,4 +38,10 @@ public class StatistiquesService implements IStatistiquesRemote {
 		return query.getResultList();
 	}
    
+	@Override
+	public Long findStatistique(){
+		TypedQuery<Long> query = 
+				em.createQuery("select count(f.id) from Feeds f", Long.class);
+		return query.getSingleResult().longValue();
+	}
 }

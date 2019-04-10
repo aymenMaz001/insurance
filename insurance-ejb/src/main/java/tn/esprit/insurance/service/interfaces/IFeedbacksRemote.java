@@ -13,4 +13,6 @@ public interface IFeedbacksRemote{
 	public Feeds findFeedsById(int id);
 	public List<Feeds> findAllFeeds();
 	public void getFeelings();
+	public List<Feeds> getAllFeedsByName(String ff);
+	public List<Feeds> getAllFeedsByState(String state);
 }
