@@ -8,7 +8,7 @@ import tn.esprit.insurance.entity.Feeds;
 
 @Remote
 public interface IArchiveService {
-	public int addArchive(Feeds arch);
+	public void addArchive(Feeds feed);
 	public void removeArchive(int id);
 	public void updateArchive(Feeds newArch);
 	public Feeds findArchiveById(int id);

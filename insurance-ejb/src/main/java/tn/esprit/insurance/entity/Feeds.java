@@ -1,7 +1,8 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -35,6 +36,8 @@ public class Feeds implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private FeedsState state;
 
+	@ManyToOne
+	User customer;
 
 	public String getTitle() {
 		return title;
@@ -93,10 +96,6 @@ public class Feeds implements Serializable {
 		this.state = state;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	User customer;
-	
-	
 	public Feeds() {
 		super();
 	}

@@ -1,7 +1,8 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -34,6 +35,17 @@ public class Archive implements Serializable {
 	
 	@Column(name = "Solving_Date")
 	private Date dateSolving;
+	
+	@Column(name = "customer_id")
+	private int customer_id;
+
+	public int getCustomer_id() {
+		return customer_id;
+	}
+
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
 
 	public int getId() {
 		return id;
