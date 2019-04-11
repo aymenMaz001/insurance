@@ -1,20 +1,10 @@
 package tn.esprit.insurance.service.implementation;
 
-import java.io.Serializable;
-import javax.persistence.*;
-
 import java.util.List;
-import java.util.Properties;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-//import edu.stanford.nlp.ling.CoreAnnotations;
-//import edu.stanford.nlp.pipeline.Annotation;
-//import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-//import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
-//import edu.stanford.nlp.util.CoreMap;
 import tn.esprit.insurance.entity.Feeds;
 import tn.esprit.insurance.entity.FeedsState;
 import tn.esprit.insurance.service.interfaces.IFeedbacksRemote;

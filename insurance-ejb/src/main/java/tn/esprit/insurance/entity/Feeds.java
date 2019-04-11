@@ -1,16 +1,9 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-//import java.sql.Date;
-import java.util.Date;
 
+import java.sql.Date;
 import javax.persistence.*;
-
-import javafx.scene.input.DataFormat;
 
 /**
  * Entity implementation class for Entity: Feeds
@@ -75,17 +68,7 @@ public class Feeds implements Serializable {
 	}
 
 	public Date getDateSent() {
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-		String s = formatter.format(dateSent);
-		 Date date1 = null;
-		try {
-			date1 = formatter.parse(s);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return date1;
+		return dateSent;
 	}
 
 
