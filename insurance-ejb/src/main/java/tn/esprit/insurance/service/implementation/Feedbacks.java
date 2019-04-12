@@ -1,5 +1,6 @@
 package tn.esprit.insurance.service.implementation;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -60,6 +61,12 @@ public class Feedbacks implements IFeedbacksRemote {
 		String sql = "select f from Feeds f where f.state like '"+state+"%'";
 		List<Feeds> emp = em.createQuery(sql, Feeds.class).getResultList();
 		return emp;	
+	}
+
+	@Override
+	public List<Feeds> getAllFeedsByDate(Date d1, Date d2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

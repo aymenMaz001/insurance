@@ -1,5 +1,6 @@
 package tn.esprit.insurance.service.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -14,4 +15,5 @@ public interface IFeedbacksRemote{
 	public List<Feeds> findAllFeeds();
 	public List<Feeds> getAllFeedsByName(String ff);
 	public List<Feeds> getAllFeedsByState(String state);
+	List<Feeds> getAllFeedsByDate(Date d1, Date d2);
 }
