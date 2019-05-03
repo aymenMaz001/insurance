@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+    </h:head>
+ 
+    <h:body>
+        <p:spinner />
+        
+        <h:form id="form">
+    <p:growl id="msgs" showDetail="true" />
+     
+    <h:panelGrid columns="2" cellpadding="5">
+         
+        <p:outputLabel for="popup" value="Popup:" />
+        <p:calendar id="popup" value="#{calendarView.date2}" />
+        </h:panelGrid>
+        </h:form>
+        
+    </h:body>
+</html>

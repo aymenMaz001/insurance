@@ -35,7 +35,7 @@ public class Feeds implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private FeedsState state;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	User customer;
 
 	public User getCustomer() {

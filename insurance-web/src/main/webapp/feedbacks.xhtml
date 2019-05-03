@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Feedbacks" />
+	<ui:define name="feedbacks">
+			<h:form id="form">
+				<b>Claims</b>
+				<h:panelGrid columns="2">
+					<h:outputText value="Object" />
+					<h:inputText value="" />
+					<h:outputText value="Choix produit" />
+					<h:selectOneMenu>
+						<f:selectItem itemValue="1" itemLabel="Produit1"/>
+						<f:selectItem itemValue="2" itemLabel="Produit2"/>
+						<f:selectItem itemValue="3" itemLabel="Produit3"/>
+						<f:selectItem itemValue="4" itemLabel="Produit4"/>
+					</h:selectOneMenu>
+					
+					<h:outputText value="Feedback" />
+					<h:inputTextarea value="" />
+					
+
+					
+    			<f:param name="productId" value="10" />
+					<h:commandButton id="btn" value="Send" />
+					<h:message for="btn"/>
+				</h:panelGrid>
+			</h:form>
+			
+								<!-- Upload File -->
+ 					<h:form enctype="multipart/form-data"  prependId="false">
+						<h:outputText value="File: "></h:outputText>
+						<h:inputFile value="#{fileupload.uploadedFile}"  />
+						<h:commandButton value="Upload" type="submit" action="#{fileupload.saveFile}"></h:commandButton>
+					</h:form>
+	</ui:define> 
+</ui:composition> 

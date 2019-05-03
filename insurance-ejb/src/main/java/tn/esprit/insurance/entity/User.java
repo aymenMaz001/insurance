@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.Enum;
 import java.lang.String;
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -56,8 +57,11 @@ public class User implements Serializable {
 	@Column(name = "seniority")
 	private boolean seniority ;
 
-	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
-	private Set<Contract> contracts;
+//	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+//	private Set<Contract> contracts;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy="customer")
+	private List<Feeds> feeds;
 
 	public String getAdress() {
 		return adress;
