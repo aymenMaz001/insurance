@@ -1,23 +1,43 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-     
-    <h:head>
-    </h:head>
- 
-    <h:body>
-        <p:spinner />
-        
-        <h:form id="form">
-    <p:growl id="msgs" showDetail="true" />
-     
-    <h:panelGrid columns="2" cellpadding="5">
-         
-        <p:outputLabel for="popup" value="Popup:" />
-        <p:calendar id="popup" value="#{calendarView.date2}" />
-        </h:panelGrid>
-        </h:form>
-        
-    </h:body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 	
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="test" />
+	<ui:define name="test">			
+		<h:form id="form1">
+		    <h:panelGrid columns="2">
+		        <p:messages>
+        			<p:autoUpdate />
+    			</p:messages>
+		        <p:outputLabel for="console" value="Basic:" />
+		        <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+		        	<p:ajax listener="#{selectOneMenuView.onProdChange}" update="msg" />
+		            <f:selectItem itemLabel="Select One" itemValue="" />
+		            <f:selectItem itemLabel="Vehicule" itemValue="Vehicule1" />
+		            <f:selectItem itemLabel="Agriculture" itemValue="Agriculture1" />
+		            <f:selectItem itemLabel="Health" itemValue="Health1" />
+		            <f:selectItem itemLabel="Retirement" itemValue="Retirement1" />
+		        </p:selectOneMenu>
+		        <br />
+		        <p:outputLabel for="console" value="message selected: " />
+		        <h:outputText value="#{selectOneMenuView.console}" id="msg" />
+		    </h:panelGrid>
+		    <h:panelGrid>
+		    	
+		    </h:panelGrid>
+		 </h:form>
+	
+		<h:form>
+		    <h:panelGrid columns="3">
+		        <h:outputText value="Keyup: " />
+		        <p:inputText id="counter" value="#{ajaxyView.txt}">
+		            <p:ajax event="keyup" update="out" listener="#{ajaxyView.handleKeyEvent}" />
+		        </p:inputText>
+		        <h:outputText id="out" value="#{ajaxyView.txt}" />
+		    </h:panelGrid>
+		</h:form>	
+	</ui:define> 
+</ui:composition> 
