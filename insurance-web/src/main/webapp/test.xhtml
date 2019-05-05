@@ -8,12 +8,12 @@
 	<ui:param name="page_name" value="test" />
 	<ui:define name="test">			
 		<h:form id="form1">
-		    <h:panelGrid columns="2">
+		    <h:panelGrid columns="3">
 		        <p:messages>
         			<p:autoUpdate />
     			</p:messages>
-		        <p:outputLabel for="console" value="Basic:" />
-		        <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+		        <p:outputLabel for="product" value="Basic:" />
+		        <p:selectOneMenu id="product" value="#{selectOneMenuView.console}" style="width:125px">
 		        	<p:ajax listener="#{selectOneMenuView.onProdChange}" update="msg" />
 		            <f:selectItem itemLabel="Select One" itemValue="" />
 		            <f:selectItem itemLabel="Vehicule" itemValue="Vehicule1" />
@@ -22,12 +22,42 @@
 		            <f:selectItem itemLabel="Retirement" itemValue="Retirement1" />
 		        </p:selectOneMenu>
 		        <br />
-		        <p:outputLabel for="console" value="message selected: " />
+		        <p:outputLabel for="msg" value="message selected: " />
 		        <h:outputText value="#{selectOneMenuView.console}" id="msg" />
 		    </h:panelGrid>
-		    <h:panelGrid>
-		    	
+		    
+		    <h:panelGrid columns="2">
+				<h:outputLabel for="year" value="Vehicule Model Year " />
+		        <p:spinner id="year" value="#{spinnerView.number1}" />
 		    </h:panelGrid>
+		    
+		    <h:panelGrid columns="2">
+		    <p:outputLabel for="age" value="Age: " />
+		        <p:selectOneMenu id="age" value="#{selectOneMenuView.console}" style="width:125px">
+		            <f:selectItem itemLabel="Age" itemValue="" />
+		            <f:selectItem itemLabel="18 to 25" itemValue="Range1" />
+		            <f:selectItem itemLabel="26 to 39" itemValue="Range2" />
+		            <f:selectItem itemLabel="40 to 65" itemValue="Range3" />
+		            <f:selectItem itemLabel="65+" itemValue="Range4" />
+		        </p:selectOneMenu>
+		    </h:panelGrid>
+		    
+		    <h:panelGrid columns="2">
+		    <p:outputLabel for="gender" value="Gender" />
+		        <p:selectOneRadio id="gender" value="#{radioView.console}">
+		            <f:selectItem itemLabel="Male" itemValue="1" />
+		            <f:selectItem itemLabel="Female" itemValue="2" />
+		        </p:selectOneRadio>
+        </h:panelGrid>
+        
+        <h:panelGrid columns="2">
+	        <h:outputText value="Status" />
+	        <p:selectOneButton value="#{selectOneView.option}">
+	            <f:selectItem itemLabel="Owned" itemValue="1" />
+	            <f:selectItem itemLabel="Credit-bail" itemValue="2" />
+	        </p:selectOneButton>
+        </h:panelGrid>
+		    
 		 </h:form>
 	
 		<h:form>
@@ -38,6 +68,11 @@
 		        </p:inputText>
 		        <h:outputText id="out" value="#{ajaxyView.txt}" />
 		    </h:panelGrid>
+		    
+	<p:growl id="growl" life="2000" />
+     
+    <p:commandButton value="Ajax Submit" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+	
 		</h:form>	
 	</ui:define> 
 </ui:composition> 

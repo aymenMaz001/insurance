@@ -9,6 +9,22 @@
 	<artifactId>insurance-web</artifactId>
 	<packaging>war</packaging>
 
+<repositories>
+    <repository>
+        <id>soluvas-public-snapshots</id>
+        <url>http://nexus.bippo.co.id/nexus/content/repositories/soluvas-public-snapshots/</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+
+
+
+
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
@@ -30,7 +46,14 @@
     <groupId>org.primefaces</groupId>
     <artifactId>primefaces</artifactId>
     <version>7.0</version>
-</dependency>
+	</dependency>
+	
+    <dependency>
+        <groupId>org.alicebot.ab</groupId>
+        <artifactId>ab</artifactId>
+        <version>4.0.4-SNAPSHOT</version>
+    </dependency>
+
 
 	</dependencies>
 
