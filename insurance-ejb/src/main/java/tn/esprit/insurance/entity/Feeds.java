@@ -3,6 +3,8 @@ package tn.esprit.insurance.entity;
 import java.io.Serializable;
 
 import java.sql.Date;
+import java.util.Calendar;
+
 import javax.persistence.*;
 
 /**
@@ -107,6 +109,16 @@ public class Feeds implements Serializable {
 
 	public Feeds() {
 		super();
+	}
+	
+	public Feeds(String title,String fb,FeedsType type) {
+		Calendar currenttime = Calendar.getInstance();
+		this.title = title;
+		this.feedback = fb;
+		this.type = type;
+		this.dateSent = new Date((currenttime.getTime()).getTime());
+		this.state = FeedsState.unchecked;
+		//this.setCustomer(customer);
 	}
    
 }

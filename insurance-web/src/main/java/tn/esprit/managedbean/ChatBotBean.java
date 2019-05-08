@@ -9,7 +9,6 @@ import org.alicebot.ab.Chat;
 import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
-import org.alicebot.ab.utils.IOUtils;
 
 @ManagedBean
 public class ChatBotBean {
@@ -20,8 +19,7 @@ public class ChatBotBean {
     private String msg;
     private String resp;
     
-    
-    public String getResp() {
+	public String getResp() {
 		return resp;
 	}
 
@@ -39,7 +37,6 @@ public class ChatBotBean {
 
 	public void chatb(){
         try {
- 
             String resourcesPath = getResourcesPath();
             System.out.println(resourcesPath);
             MagicBooleans.trace_mode = TRACE_MODE;
@@ -47,8 +44,6 @@ public class ChatBotBean {
             Chat chatSession = new Chat(bot);
             bot.brain.nodeStats();
             String textLine = "";
-            
-            
             
             System.out.println(msg);
             System.out.print("Human : ");
@@ -68,9 +63,10 @@ public class ChatBotBean {
                 while (response.contains("&lt;"))
                     response = response.replace("&lt;", "<");
                 while (response.contains("&gt;"))
-                    response = response.replace("&gt;", ">");
-                	this.setResp("Robot : " + response);
-                System.out.println("Robot : " + response);
+                    response = response.replace("&gt;", ">");  
+                
+                this.setResp("\nYou: "+this.getMsg()+"\nRobot : " + response);
+//                System.out.println("Robot : " + response);
             }
         } catch (Exception e) {
             e.printStackTrace();

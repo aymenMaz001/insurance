@@ -9,9 +9,6 @@
 	<ui:define name="test">			
 		<h:form id="form1">
 		    <h:panelGrid columns="3">
-		        <p:messages>
-        			<p:autoUpdate />
-    			</p:messages>
 		        <p:outputLabel for="product" value="Basic:" />
 		        <p:selectOneMenu id="product" value="#{selectOneMenuView.console}" style="width:125px">
 		        	<p:ajax listener="#{selectOneMenuView.onProdChange}" update="msg" />
@@ -68,11 +65,29 @@
 		        </p:inputText>
 		        <h:outputText id="out" value="#{ajaxyView.txt}" />
 		    </h:panelGrid>
-		    
+	
+	<h3>Habitation</h3>
+	
+	
+<!-- 	<h:panelGrid columns="3">
+	<p:outputLabel for="default" value="Default:" />
+    <p:inputText id="default" required="true" />
+	<p:message for="default" />
+	</h:panelGrid> -->
+	
+	<br />
 	<p:growl id="growl" life="2000" />
      
     <p:commandButton value="Ajax Submit" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
-	
-		</h:form>	
+			        <p:messages closable="true">
+        			<p:autoUpdate />
+    			</p:messages>
+    			
+ 	<h:panelGrid columns="3">
+	   <h:commandButton action = "simulator?faces-redirect = true" value = "Claims" />
+	   <h:commandButton action = "chatbot?faces-redirect = true" value = "ChatBot" />
+	   <h:commandButton action = "temp?faces-redirect = true" value = "Temp" />
+   </h:panelGrid>
+		</h:form>
 	</ui:define> 
 </ui:composition> 

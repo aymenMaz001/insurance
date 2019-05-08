@@ -3,6 +3,7 @@ package tn.esprit.insurance.service.implementation;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +12,7 @@ import tn.esprit.insurance.entity.FeedsState;
 import tn.esprit.insurance.service.interfaces.IFeedbacksRemote;
 
 @Stateless
+@LocalBean
 public class Feedbacks implements IFeedbacksRemote {
 
 	@PersistenceContext(unitName = "insurance-ejb")

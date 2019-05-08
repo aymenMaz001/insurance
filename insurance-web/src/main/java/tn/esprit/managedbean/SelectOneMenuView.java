@@ -6,9 +6,18 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class SelectOneMenuView {
      
-    private String console; 
-        
-    public String getConsole() {
+    private String console;
+    private String reason;
+    
+    public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getConsole() {
         return console;
     }
  

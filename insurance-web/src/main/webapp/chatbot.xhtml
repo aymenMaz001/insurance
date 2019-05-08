@@ -11,12 +11,11 @@
 				<b>Chatbot</b>
 				<h:panelGrid columns="2">
 					<h:outputText value="Ask Me" />
-					<h:inputTextarea value="#{chatBotBean.resp}" readonly="true" />
+					<h:inputTextarea id="areaMsg" value="#{chatBotBean.resp}" readonly="true" rows = "20" cols = "30" />
 					<p:outputLabel for="chat" value="submit" />
 		        	<h:inputText value="#{chatBotBean.msg}" id="chat" />
-					
-					<h:commandButton action="#{chatBotBean.chatb}" value="Chat" />
-					
+						
+					<p:commandButton action="#{chatBotBean.chatb}" value="Chat" update="areaMsg" />
 					<h:commandButton id="btn" value="Send" />
 					<h:message for="btn"/>
 				</h:panelGrid>

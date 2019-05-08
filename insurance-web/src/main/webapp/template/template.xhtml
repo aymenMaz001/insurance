@@ -7,12 +7,63 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 <title>#{page_name}</title>
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="plugins/ionicons/ionicons.min.css" />
+        <!-- animate css -->
+        <link rel="stylesheet" href="plugins/animate-css/animate.css" />
+        <!-- Hero area slider css -->
+        <link rel="stylesheet" href="plugins/slider/slider.css" />
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css" />
+        <link rel="stylesheet" href="plugins/owl-carousel/owl.theme.css" />
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="plugins/facncybox/jquery.fancybox.css" />
+        <!-- template main css file -->
+        <link rel="stylesheet" href="css/style.css" />
+        
+<!--          <h:outputStylesheet name="plugins/bootstrap/bootstrap.min.css"/>
+        <h:outputStylesheet name="plugins/ionicons/ionicons.min.css"/>
+        <h:outputStylesheet name="plugins/animate-css/animate.css"/>
+        <h:outputStylesheet name="plugins/slider/slider.css"/>
+        <h:outputStylesheet name="plugins/owl-carousel/owl.carousel.css"/>
+        <h:outputStylesheet name="plugins/owl-carousel/owl.theme.css"/>
+        <h:outputStylesheet name="plugins/facncybox/jquery.fancybox.css"/>
+        <h:outputStylesheet name="css/style.css"/> -->
+
+		<!-- Template Javascript Files
+		================================================== -->
+		<!-- jquery -->
+		<!-- <script src="plugins/jQurey/jquery.min.js"></script> -->
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
+		<!-- Form Validation -->
+ 	    <script src="plugins/form-validation/jquery.form.js"></script> 
+	    <script src="plugins/form-validation/jquery.validate.min.js"></script>
+		<!-- owl carouserl js -->
+		<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="plugins/bootstrap/bootstrap.min.js"></script>
+ 		<!-- wow js -->
+		<script src="plugins/wow-js/wow.min.js"></script>
+		<!-- slider js -->
+		<script src="plugins/slider/slider.js"></script>
+		<!-- Fancybox -->
+		<script src="plugins/facncybox/jquery.fancybox.js"></script>
+		<!-- template main js -->
+		<script src="js/main.js"></script>
+		
 </h:head>
 <h:body>
 	<ui:include src="/template/header.xhtml" />
 	<!-- <ui:insert name="feedbacks" /> -->
-	<!-- <ui:insert name="test" /> -->
+	<ui:insert name="test" />
+	<ui:insert name="claim" />
 	<ui:insert name="chatbot" />
+	<ui:insert name="temp" />
 	<ui:include src="/template/footer.xhtml" />
 </h:body>
 </html>
