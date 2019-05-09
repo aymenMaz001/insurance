@@ -1,10 +1,8 @@
 package tn.esprit.managedbean;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 import org.alicebot.ab.Bot;
@@ -12,6 +10,10 @@ import org.alicebot.ab.Chat;
 import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
+
+import tn.esprit.insurance.entity.Premium;
+import tn.esprit.insurance.service.implementation.Feedbacks;
+import tn.esprit.insurance.service.implementation.PremiumService;
 
 @ManagedBean
 public class ChatBotBean {
@@ -22,6 +24,14 @@ public class ChatBotBean {
     private String msg;
     private String resp;
 
+    
+    @EJB
+    PremiumService pr;
+    
+    public float getPremium(int id){
+    	return pr.findPrimeById(id).getValue();
+    }
+    
 	public String getResp() {
 		return resp;
 	}
@@ -68,7 +78,7 @@ public class ChatBotBean {
                 while (response.contains("&gt;"))
                     response = response.replace("&gt;", ">");  
                 
-                this.setResp("\nYou: "+this.getMsg()+"\nRobot : " + response);
+                this.setResp("Botty : " + response);
 //                System.out.println("Robot : " + response);
             }
         } catch (Exception e) {

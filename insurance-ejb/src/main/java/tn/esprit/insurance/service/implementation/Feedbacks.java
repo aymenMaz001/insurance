@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import tn.esprit.insurance.entity.Feeds;
 import tn.esprit.insurance.entity.FeedsState;
+import tn.esprit.insurance.entity.Premium;
 import tn.esprit.insurance.service.interfaces.IFeedbacksRemote;
 
 @Stateless
@@ -70,6 +71,7 @@ public class Feedbacks implements IFeedbacksRemote {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }
 
 

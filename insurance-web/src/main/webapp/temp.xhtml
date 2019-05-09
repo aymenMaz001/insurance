@@ -131,12 +131,12 @@
 							
 						</div>
                                
-						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
+<!-- 						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
 							<input type="text" placeholder="Subject" class="form-control" name="subject" id="subject" />
-						</div>
+						</div> -->
                             
 						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
-							<h:inputTextarea id="areaMsg" value="#{feedsBean.feed}" rows = "6" required="true" a:placeholder="Message" class="form-control"/>
+							<h:inputTextarea id="areaMsg" value="#{feedsBean.feed}" rows = "6" required="true" a:placeholder="Message" class="form-control" />
 						</div>
                             
 						<div id="success" class="success">
@@ -160,24 +160,32 @@
             </div>
             <div class="col-md-6">
                  <div class="map-area">
-                    <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Find Us</h2>
+                    <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Ask Botty</h2>
                     <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                        Si aute quis eu proident o cupidatat ne anim nescius, et est praesentibus, o quorum vidisse expetendis, nostrud eram quibusdam ad nam nostrud ubi.
-                        
+                        Click on BOTTY, and chat with him.
                     </p>
+                    
                     <div>
                     
-                    <h:form>
-                    <h:commandLink action="chatbot">
-					    <h:graphicImage value="images/bot.jpg" />
-					</h:commandLink>
-					
-					<h:commandLink target="_blank" onclick="alert('ok');">click me</h:commandLink>
-                    </h:form>
-                    
-                    </div>
-                    <div class="map">
-                        
+	                    <h:form>
+	                    <h:commandLink action="#{userContoller.show()}">
+						    <h:graphicImage value="images/bot.jpg" />
+						    <f:ajax render="@form" />
+						</h:commandLink>
+						<h:commandLink action="#{userContoller.show()}" >test
+							<f:ajax render="@form" />
+						</h:commandLink>
+						
+						<h:panelGroup>
+						<p:outputPanel rendered="#{userContoller.visible}">
+							
+							<h:inputTextarea id="areaMsg" value="#{chatBotBean.resp}" readonly="true" rows = "4" class="form-control" />
+				        	<h:inputText value="#{chatBotBean.msg}" id="chat" class="form-control" placeholder="Say Hi" />
+				        	<br />
+							<p:commandButton action="#{chatBotBean.chatb()}" value="Chat" update="areaMsg" class="btn btn-default btn-send" />
+	                    </p:outputPanel>
+	                    </h:panelGroup>
+	                    </h:form>
                     </div>
                 </div>
             </div>

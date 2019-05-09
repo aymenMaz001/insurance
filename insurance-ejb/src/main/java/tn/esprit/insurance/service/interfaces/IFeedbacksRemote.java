@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import tn.esprit.insurance.entity.Feeds;
+import tn.esprit.insurance.entity.Premium;
 
 @Remote
 public interface IFeedbacksRemote{

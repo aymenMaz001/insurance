@@ -6,7 +6,8 @@
     <!-- <welcome-file>feedbacks.jsf</welcome-file> -->
     <!-- <welcome-file>simulator.jsf</welcome-file> -->
     <!-- <welcome-file>chatbot.jsf</welcome-file> -->
-    <welcome-file>test.jsf</welcome-file>
+    <welcome-file>login.jsf</welcome-file>
+   <!--  <welcome-file>test.jsf</welcome-file> -->
   </welcome-file-list>
 
   <servlet>

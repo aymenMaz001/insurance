@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <h2>Gallery</h2>
+                            <h2>Simulator</h2>
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="index.html">
@@ -88,7 +88,7 @@
                                         Home
                                     </a>
                                 </li>
-                                <li class="active">Gallery</li>
+                                <li class="active">Simulator</li>
                             </ol>
                         </div>
                     </div>
@@ -104,13 +104,13 @@
     <div class="container">
     <b:tabView activeIndex="2">
   <b:tab title="Vehicule">
-    <b:form inline="true">
+    <b:form horizontal="true">
     <b:panel title="Simulator">
-        <b:touchSpin id="spin1" value="#{vehiculeBean.model}" min="2000" max="2020" step="1" label="Vehicule model year"  />
+        <b:touchSpin id="spin1" value="#{vehiculeBean.model}" min="2000" max="2020" step="1" label="Vehicule model year" colMd="2" labelColMd="2" />
     <br />
     <br />
     
-	    <b:selectOneMenu value="#{retirementBean.period}" colMd="2" required="true" label="Payment period" labelColMd="2">
+	    <b:selectOneMenu value="#{vehiculeBean.period}" required="true" label="Payment period" colMd="2" labelColMd="2">
 			<f:selectItem itemLabel="(Payement period)" itemValue="" />
             <f:selectItem itemLabel="Daily" itemValue="1" />
             <f:selectItem itemLabel="Weekly" itemValue="2" />
@@ -118,16 +118,7 @@
             <f:selectItem itemLabel="Every 6 months" itemValue="4" />
             <f:selectItem itemLabel="Every year" itemValue="5" />
 	    </b:selectOneMenu>
-	    <br /><br />
-	    <!-- <b:message for="@previous" colMd="2" /><br /> -->
-
-	    <b:radiobutton value="#{vehiculeBean.gender}" >
-	    	<f:selectItem itemValue="Male"   itemLabel="Male" />
-	    	<f:selectItem itemValue="Female"   itemLabel="Female" />
-    	</b:radiobutton>
-		<br />
-   		<br />
-    	<!-- <b:message for="@form:@property(vehiculeBean.gender)" /> -->
+	    <br />
 
 	   	<b:selectOneMenu value="#{vehiculeBean.ageRange}" colMd="2" required="true" label="Age" labelColMd="2">
 			<f:selectItem itemLabel="(Please select)" itemValue="" />
@@ -138,7 +129,41 @@
 	    </b:selectOneMenu>
 		<br />
     	<br />
-	    <b:commandButton look="primary" value="Calculate" process="@form" update="@form" />  
+    	
+    	<b:selectOneMenu value="#{vehiculeBean.typeOfUse}" colMd="2" required="true" label="Type of use" labelColMd="2">
+			<f:selectItem itemLabel="(Please select)" itemValue="" />
+			<f:selectItem itemLabel="Personnal" itemValue="1" />
+			<f:selectItem itemLabel="Commercial" itemValue="2" />
+			<f:selectItem itemLabel="Family " itemValue="3" />
+	    </b:selectOneMenu>
+    	<br /><br />
+    	
+  		<b:radiobutton value="#{vehiculeBean.gender}" colMd="2">
+		 	<f:selectItem itemValue="Male"   itemLabel="Male" required="true" />
+		 	<f:selectItem itemValue="Female"   itemLabel="Female" />
+		</b:radiobutton>
+		<br />
+    	<br />
+    	
+    	<b:selectBooleanCheckbox value="#{vehiculeBean.garage}" caption="Yes" label="Do you have a personnal Garage/parking spot ?" colMd="2" labelColMd="2" />
+    	<br /><br />
+    	<b:selectOneMenu value="#{vehiculeBean.familySituation}" colMd="2" required="true" label="Family situation" labelColMd="2">
+			<f:selectItem itemLabel="(Please select)" itemValue="" />
+			<f:selectItem itemLabel="Single" itemValue="single" />
+			<f:selectItem itemLabel="Married" itemValue="married" />
+			<f:selectItem itemLabel="Seperated" itemValue="seperated" />
+	    </b:selectOneMenu>
+    	<br /><br />
+    	<b:selectBooleanCheckbox value="#{vehiculeBean.antecident}" caption="Yes" label="Do you have previous accidents ?" colMd="2" labelColMd="2" />
+    	<br /><br />
+    	<b:row>
+ 	 		<b:column>
+    	<b:slider2 min="1" max="15" span="2" value="#{vehiculeBean.duration}" label="Contract duration(in years)" colMd="2" labelColMd="2" />
+    		</b:column>
+    	</b:row>
+    	<br /><br />
+	    <!-- <b:commandButton look="primary" value="Calculate" process="@form" update="@form" action="#{buttonView.buttonAction(50)}" /> -->
+	    <b:commandButton look="primary" value="Calculate" process="@form" update="@form" action="#{vehiculeBean.calculPrime()}" />  
 	</b:panel>
 	 <b:messages/>
     </b:form>
@@ -147,12 +172,36 @@
   <b:panel title="Simulator">
     <b:form inline="true">
     <br />
-    	<b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD/MM/YYYY" label="Birth Date" required="true" /><br /><br />
-    	<b:inputText label="Retirement age" required="true" value="#{retirementBean.retirement}">
-    		<f:convertNumber />
-    	</b:inputText>
+    	<b:dateTimePicker value="#{retirementBean.birthDate}" format="DD/MM/YYYY" label="Birth Date" required="true" /><br /><br />
+    	<b:inputText label="Retirement age" required="true" value="#{retirementBean.retirement}" />
     	<br /><br />
-    	<b:selectOneMenu value="#{retirementBean.period}" colMd="2" required="true" label="Payment period" labelColMd="2">
+	  	<b:radiobutton value="#{retirementBean.gender}" colMd="2">
+		 	<f:selectItem itemValue="Male"   itemLabel="Male" required="true" />
+		 	<f:selectItem itemValue="Female"   itemLabel="Female" />
+		</b:radiobutton>
+		<br />
+    	<br />
+    	
+	    <b:selectOneMenu value="#{retirementBean.business}" colMd="2" required="true" label="Business Type" labelColMd="2">
+			<f:selectItem itemLabel="(Payement period)" itemValue="" />
+            <f:selectItem itemLabel="Farmer" itemValue="Farmer" />
+            <f:selectItem itemLabel="Wage earner" itemValue="wage" />
+            <f:selectItem itemLabel="Day worker" itemValue="dayW" />
+	    </b:selectOneMenu>
+	    <br /><br />
+	    <b:inputText label="Monthly wage" required="true" value="#{retirementBean.wage}">
+     	<f:facet name="append">
+        	<h:outputText value="DT" />
+        </f:facet>
+        </b:inputText>
+	    <br /><br />
+    	<b:inputText label="Premium to pay" colMd="2" labelColMd="2" required="true" value="#{retirementBean.prime}">
+      		<f:facet name="append">
+        <h:outputText value="DT" />
+        	</f:facet>
+        </b:inputText>
+        <br /><br />
+            	<b:selectOneMenu value="#{retirementBean.period}" colMd="2" required="true" label="Payment period" labelColMd="2">
 			<f:selectItem itemLabel="(Payement period)" itemValue="" />
             <f:selectItem itemLabel="Daily" itemValue="1" />
             <f:selectItem itemLabel="Weekly" itemValue="2" />
@@ -161,30 +210,40 @@
             <f:selectItem itemLabel="Every year" itemValue="5" />
 	    </b:selectOneMenu>
 	    <br /><br />
-	    <b:inputText label="Retirement age" required="true" value="#{retirementBean.prime}">
-    		<f:convertNumber />
-    	</b:inputText> <br /><br />
-    	<b:commandButton look="primary" value="Calculate" process="@form" update="@form" actionListener="#{buttonView.buttonAction(50)} />
-    <b:messages/>
+	    
+    	<b:commandButton look="primary" value="Calculate" process="@form" update="@form" action="#{retirementBean.calculPrime()}" />
+    <b:messages />
     </b:form>
     </b:panel>
   </b:tab>
-    <b:tab title="Health">
+    <b:tab title="Agriculture">
     <b:panel title="Simulator">
     <b:form>
-    <p>This is the second tab.</p>
+    	<b:selectOneMenu value="#{agricultureBean.type}" colMd="3" required="true" label="Type of property" labelColMd="3">
+			<f:selectItem itemLabel="(Type)" itemValue="" />
+            <f:selectItem itemLabel="Land" itemValue="land" />
+            <f:selectItem itemLabel="Cattle" itemValue="cattle" />
+            <f:selectItem itemLabel="Crop" itemValue="crop" />
+	    </b:selectOneMenu>
+	    <br /><br />
+    	<b:inputText label="Esimated Price" colMd="2" labelColMd="2" required="true">
+      		<f:facet name="append">
+        <h:outputText value="DT" />
+        	</f:facet>
+        </b:inputText>
+        <br /><br />
+        <b:row>
+ 	 		<b:column>
+    	<b:slider2 min="1" max="10" span="2" value="#{agricultureBean.duration}" label="Contract duration(in years)" colMd="2" labelColMd="2" />
+    		</b:column>
+    	</b:row>
+    	<br /><br />
+        <b:commandButton look="primary" value="Calculate" process="@form" update="@form" action="#{buttonView.buttonAction(50)}" />
+    	<b:messages />
     </b:form>
     </b:panel>
   </b:tab>
 </b:tabView>
-	
-	<br />
-	<b:form>
-	<p:growl id="growl" life="2000" />
-     
-    <p:commandButton value="Ajax Submit" id="ajax" update="@form" actionListener="#{buttonView.buttonAction(50)}" />
-	<b:messages />
-    </b:form>
     </div>
 </section>   
 
