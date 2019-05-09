@@ -14,9 +14,17 @@
 					<h:inputTextarea id="areaMsg" value="#{chatBotBean.resp}" readonly="true" rows = "20" cols = "30" />
 					<p:outputLabel for="chat" value="submit" />
 		        	<h:inputText value="#{chatBotBean.msg}" id="chat" />
-						
-					<p:commandButton action="#{chatBotBean.chatb}" value="Chat" update="areaMsg" />
-					<h:commandButton id="btn" value="Send" />
+					<p:commandButton action="#{chatBotBean.chatb()}" value="Chat" update="areaMsg" />
+					
+<!-- 					    <script type="text/javascript">
+					        function handleMessage(data) {
+					            var chatContent = $(PrimeFaces.escapeClientId('form:areaMsg'));
+					            chatContent.append(data);
+					            chatContent.scrollTop(chatContent.height());
+					            alert("ok");
+					        }
+					    </script> -->
+					
 					<h:message for="btn"/>
 				</h:panelGrid>
 			</h:form> 

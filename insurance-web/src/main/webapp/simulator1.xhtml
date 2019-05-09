@@ -6,9 +6,9 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets" 	template="/template/template.xhtml">
 
-	<ui:param name="page_name" value="Temp" />
+	<ui:param name="page_name" value="Simulator" />
 
-	<ui:define name="temp">
+	<ui:define name="simulator">
 	
         <!--
         ==================================================
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <h2>Contact</h2>
+                            <h2>Gallery</h2>
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="index.html">
@@ -88,7 +88,7 @@
                                         Home
                                     </a>
                                 </li>
-                                <li class="active">Contact</li>
+                                <li class="active">Gallery</li>
                             </ol>
                         </div>
                     </div>
@@ -97,123 +97,100 @@
         </section>
 
 
-<!-- 
-================================================== 
-    Contact Section Start
-================================================== -->
-<section id="contact-section">
+<!--=============================
+=            Gallery            =
+==============================-->
+<section id="gallery" class="gallery">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="block">
-                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Contact With Me</h2>
-                    <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ea!
-                         consectetur adipisicing elit. Dolore, ea!
-                    </p>
-                    <div class="contact-form">
-                        <h:form>
-                        
-                        <!-- Liste déroulante pour choisir la raison  -->
-	                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-	                    <h:selectOneMenu id="Reason" value="#{feedsBean.type}" class="form-control">
-				            <f:selectItem itemLabel="Reason" itemValue="" />
-				            <f:selectItem itemLabel="Feedback" itemValue="feedback" />
-				            <f:selectItem itemLabel="Question" itemValue="question" />
-				            <f:selectItem itemLabel="Claim" itemValue="claim" />
-				        </h:selectOneMenu>
-	                    </div>
+    <b:tabView activeIndex="2">
+  <b:tab title="Vehicule">
+    <b:form inline="true">
+    <b:panel title="Simulator">
+        <b:touchSpin id="spin1" value="#{vehiculeBean.model}" min="2000" max="2020" step="1" label="Vehicule model year"  />
+    <br />
+    <br />
+    
+	    <b:selectOneMenu value="#{retirementBean.period}" colMd="2" required="true" label="Payment period" labelColMd="2">
+			<f:selectItem itemLabel="(Payement period)" itemValue="" />
+            <f:selectItem itemLabel="Daily" itemValue="1" />
+            <f:selectItem itemLabel="Weekly" itemValue="2" />
+            <f:selectItem itemLabel="Monthly" itemValue="3" />
+            <f:selectItem itemLabel="Every 6 months" itemValue="4" />
+            <f:selectItem itemLabel="Every year" itemValue="5" />
+	    </b:selectOneMenu>
+	    <br /><br />
+	    <!-- <b:message for="@previous" colMd="2" /><br /> -->
 
-             			<!-- Input Texte choisir le sujet   -->
-             			
-						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-							<p:inputText id="ob" required="true" value="#{feedsBean.title}" class="form-control" placeholder="Topic" />
-							
-						</div>
-                               
-						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
-							<input type="text" placeholder="Subject" class="form-control" name="subject" id="subject" />
-						</div>
-                            
-						<div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
-							<h:inputTextarea id="areaMsg" value="#{feedsBean.feed}" rows = "6" required="true" a:placeholder="Message" class="form-control"/>
-						</div>
-                            
-						<div id="success" class="success">
-						Thank you. The Mailman is on His Way :)
-						</div>
-                            
-						<div id="error" class="error">
-                        Sorry, don't know what happened. Try later :(
-                        </div>
-						<div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
-						    <p:commandButton value="Send" id="ajaxBtn" action="#{feedsBean.addFb()}" class="btn btn-default btn-send" />
-						</div>
-						<div>
-						    <p:messages id="messages" showDetail="true" closable="true">
-						        <p:autoUpdate />
-						    </p:messages>
-						</div>
-                        </h:form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                 <div class="map-area">
-                    <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Find Us</h2>
-                    <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                        Si aute quis eu proident o cupidatat ne anim nescius, et est praesentibus, o quorum vidisse expetendis, nostrud eram quibusdam ad nam nostrud ubi.
-                        
-                    </p>
-                    <div>
-                    
-                    <h:form>
-                    <h:commandLink action="chatbot">
-					    <h:graphicImage value="images/bot.jpg" />
-					</h:commandLink>
-					
-					<h:commandLink target="_blank" onclick="alert('ok');">click me</h:commandLink>
-                    </h:form>
-                    
-                    </div>
-                    <div class="map">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row address-details">
-            <div class="col-md-3">
-                <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
-                    <i class="ion-ios-location-outline"></i>
-                    <h5>125 , Kings Street,Melbourne <br />United Kingdom,600562</h5>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
-                    <i class="ion-ios-location-outline"></i>
-                    <h5>125 , Kings Street,Melbourne <br />United Kingdom,600562</h5>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
-                    <i class="ion-ios-email-outline"></i>
-                    <p>support@themefisher.com<br />support@themefisher.com</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
-                    <i class="ion-ios-telephone-outline"></i>
-                    <p>+07 052 245 022<br />+07 999 999 999</p>
-                </div>
-            </div>
-        </div>
+	    <b:radiobutton value="#{vehiculeBean.gender}" >
+	    	<f:selectItem itemValue="Male"   itemLabel="Male" />
+	    	<f:selectItem itemValue="Female"   itemLabel="Female" />
+    	</b:radiobutton>
+		<br />
+   		<br />
+    	<!-- <b:message for="@form:@property(vehiculeBean.gender)" /> -->
+
+	   	<b:selectOneMenu value="#{vehiculeBean.ageRange}" colMd="2" required="true" label="Age" labelColMd="2">
+			<f:selectItem itemLabel="(Please select)" itemValue="" />
+			<f:selectItem itemLabel="18 to 25" itemValue="range1" />
+			<f:selectItem itemLabel="26 to 39" itemValue="range2" />
+			<f:selectItem itemLabel="40 to 65" itemValue="range3" />
+			<f:selectItem itemLabel="65+" itemValue="range4" />
+	    </b:selectOneMenu>
+		<br />
+    	<br />
+	    <b:commandButton look="primary" value="Calculate" process="@form" update="@form" />  
+	</b:panel>
+	 <b:messages/>
+    </b:form>
+  </b:tab>
+  <b:tab title="Retirement">
+  <b:panel title="Simulator">
+    <b:form inline="true">
+    <br />
+    	<b:dateTimePicker value="#{dateTimeBean.justNow}" format="DD/MM/YYYY" label="Birth Date" required="true" /><br /><br />
+    	<b:inputText label="Retirement age" required="true" value="#{retirementBean.retirement}">
+    		<f:convertNumber />
+    	</b:inputText>
+    	<br /><br />
+    	<b:selectOneMenu value="#{retirementBean.period}" colMd="2" required="true" label="Payment period" labelColMd="2">
+			<f:selectItem itemLabel="(Payement period)" itemValue="" />
+            <f:selectItem itemLabel="Daily" itemValue="1" />
+            <f:selectItem itemLabel="Weekly" itemValue="2" />
+            <f:selectItem itemLabel="Monthly" itemValue="3" />
+            <f:selectItem itemLabel="Every 6 months" itemValue="4" />
+            <f:selectItem itemLabel="Every year" itemValue="5" />
+	    </b:selectOneMenu>
+	    <br /><br />
+	    <b:inputText label="Retirement age" required="true" value="#{retirementBean.prime}">
+    		<f:convertNumber />
+    	</b:inputText> <br /><br />
+    	<b:commandButton look="primary" value="Calculate" process="@form" update="@form" actionListener="#{buttonView.buttonAction(50)} />
+    <b:messages/>
+    </b:form>
+    </b:panel>
+  </b:tab>
+    <b:tab title="Health">
+    <b:panel title="Simulator">
+    <b:form>
+    <p>This is the second tab.</p>
+    </b:form>
+    </b:panel>
+  </b:tab>
+</b:tabView>
+	
+	<br />
+	<b:form>
+	<p:growl id="growl" life="2000" />
+     
+    <p:commandButton value="Ajax Submit" id="ajax" update="@form" actionListener="#{buttonView.buttonAction(50)}" />
+	<b:messages />
+    </b:form>
     </div>
-</section>  
+</section>   
 
 
 
-
+            
             <!--
             ==================================================
             Call To Action Section Start

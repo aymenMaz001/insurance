@@ -66,6 +66,10 @@ public class ButtonView {
     public void buttonAction() {
         addMessage("Your prime is : ");
     }
+    
+    public void buttonAction(String p) {
+        addMessage("Your prime is : " + p);
+    }
  
     public void addMessage(String summary) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);

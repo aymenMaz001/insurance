@@ -1,7 +1,10 @@
 package tn.esprit.managedbean;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.alicebot.ab.Bot;
@@ -18,7 +21,7 @@ public class ChatBotBean {
     
     private String msg;
     private String resp;
-    
+
 	public String getResp() {
 		return resp;
 	}
