@@ -28,7 +28,7 @@ public class ChatBotBean {
     @EJB
     PremiumService pr;
     
-    public float getPremium(int id){
+    public float getPremium(Long id){
     	return pr.findPrimeById(id).getValue();
     }
     
@@ -58,13 +58,13 @@ public class ChatBotBean {
             bot.brain.nodeStats();
             String textLine = "";
             
-            System.out.println(msg);
-            System.out.print("Human : ");
             textLine = this.msg;
             if ((textLine == null) || (textLine.length() < 1))
                 textLine = MagicStrings.null_input;
-            if (textLine.equals("q")) {
-                System.exit(0);
+            if (textLine.toUpperCase().contains("I AM PAYING")) {
+                this.setResp("Botty : You are paying as a prime: " + getPremium(1L)+ " DT");
+            }else if (textLine.toUpperCase().contains("COST ME")) {
+                    this.setResp("Botty : <a href='simulator1.jsf'>Click here</a> ");
             } else if (textLine.equals("wq")) {
                 bot.writeQuit();
                 System.exit(0);

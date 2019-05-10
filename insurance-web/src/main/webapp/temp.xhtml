@@ -106,10 +106,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="block">
-                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Contact With Me</h2>
+                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">SEND YOUR FEEDBACKS</h2>
                     <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ea!
-                         consectetur adipisicing elit. Dolore, ea!
+                        If you have any question, suggestion or claims do not hesitate to tell us. We will reach you ASAP.
                     </p>
                     <div class="contact-form">
                         <h:form>
@@ -168,23 +167,22 @@
                     <div>
                     
 	                    <h:form>
-	                    <h:commandLink action="#{userContoller.show()}">
+	                    <!-- <h:commandLink action="#{userContoller.show()}"> -->
+	                    <h:commandLink action="chatbot">
 						    <h:graphicImage value="images/bot.jpg" />
-						    <f:ajax render="@form" />
 						</h:commandLink>
-						<h:commandLink action="#{userContoller.show()}" >test
+<!-- 						<h:commandLink action="#{userContoller.show()}" >test
 							<f:ajax render="@form" />
-						</h:commandLink>
-						
-						<h:panelGroup>
-						<p:outputPanel rendered="#{userContoller.visible}">
+						</h:commandLink> -->
+
 							
-							<h:inputTextarea id="areaMsg" value="#{chatBotBean.resp}" readonly="true" rows = "4" class="form-control" />
-				        	<h:inputText value="#{chatBotBean.msg}" id="chat" class="form-control" placeholder="Say Hi" />
+							<!-- <h:inputTextarea id="areaMsg" value="#{chatBotBean.resp}" readonly="true" rows = "4" class="form-control" /> -->
+				        	<h:outputText id="areaMsg" value="#{chatBotBean.resp}" escape="false" />
+				        	
+				        	<b:inputText value="#{chatBotBean.msg}" id="chat" class="form-control" placeholder="Say Hi" />
 				        	<br />
-							<p:commandButton action="#{chatBotBean.chatb()}" value="Chat" update="areaMsg" class="btn btn-default btn-send" />
-	                    </p:outputPanel>
-	                    </h:panelGroup>
+							<b:commandButton action="#{chatBotBean.chatb()}" value="Chat" update="areaMsg" class="btn btn-default btn-send" />
+
 	                    </h:form>
                     </div>
                 </div>

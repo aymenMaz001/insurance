@@ -20,7 +20,7 @@ public class PremiumService {
 	@PersistenceContext(unitName = "insurance-ejb")
 	EntityManager em;
 	
-	public Premium findPrimeById(int id){
+	public Premium findPrimeById(Long id){
 		Premium p = em.find(Premium.class, id);
 		return p;
 		
